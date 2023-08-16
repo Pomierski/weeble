@@ -8,12 +8,16 @@ export const ClueRowHeader = () => {
     state: { todaysAnime },
   } = useAppContext();
   const keys = Object.keys(getAnimeClueData(todaysAnime)).map((key) =>
-    key === "imageUrl" ? "Anime" : key,
+    key === "imageUrl" ? "Anime" : key
   );
 
-  return keys.map((key) => (
-    <div className="clue-row-header__item" key={key}>
-      {splitOnUppercase(key)}
-    </div>
-  ));
+  return (
+    <>
+      {keys.map((key) => (
+        <div className="clue-row-header__item" key={key}>
+          {splitOnUppercase(key)}
+        </div>
+      ))}
+    </>
+  );
 };

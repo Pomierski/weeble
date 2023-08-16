@@ -1,4 +1,3 @@
-import React from "react";
 import { BiAlignLeft, BiImageAlt } from "react-icons/bi";
 import { Tooltip } from "react-tooltip";
 import { useAppContext } from "../../store/context";

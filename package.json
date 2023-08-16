@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "deploy": "gh-pages -d build",
+    "deploy": "yarn build && gh-pages -d dist",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:prettier": "prettier *.{tsx,ts,js,scss} --write",
     "preview": "vite preview"

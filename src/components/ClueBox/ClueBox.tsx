@@ -63,9 +63,14 @@ export const ClueBox = ({
   const isImageBox = value === imageUrl;
   const dataKey = valueKey as keyof Data;
   const shouldDisplayArrowUp =
-    typeof todaysAnime[dataKey] === "number" && todaysAnime[dataKey] > value;
+    // todo: remove any
+    typeof todaysAnime[dataKey] === "number" &&
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    (todaysAnime as any)[dataKey] > value;
   const shouldDisplayArrowDown =
-    typeof todaysAnime[dataKey] === "number" && todaysAnime[dataKey] < value;
+    typeof todaysAnime[dataKey] === "number" &&
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    (todaysAnime as any)[dataKey] < value;
 
   return (
     <motion.div
@@ -84,7 +89,7 @@ export const ClueBox = ({
       {(shouldDisplayArrowUp || shouldDisplayArrowDown) && (
         <div
           className={"clue-box__arrow".concat(
-            shouldDisplayArrowDown ? " clue-box__arrow--down" : "",
+            shouldDisplayArrowDown ? " clue-box__arrow--down" : ""
           )}
         />
       )}

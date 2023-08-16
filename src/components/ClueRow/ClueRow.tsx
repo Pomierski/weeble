@@ -19,7 +19,7 @@ export const ClueRow = ({ data }: Props) => {
       }
       const todaysAnimeValue = todaysAnime[key] as unknown[];
       const todaysAnimeSimilarity = todaysAnimeValue.filter((answerValue) =>
-        value.includes(answerValue),
+        value.includes(answerValue)
       );
       const isExact = todaysAnimeSimilarity.length === todaysAnimeValue.length;
       const isWrong = todaysAnimeSimilarity.length === 0;
@@ -53,18 +53,25 @@ export const ClueRow = ({ data }: Props) => {
 
   const clue = getAnimeClueData(data);
 
-  return Object.entries(clue).map(([key, value], index) => {
-    const imageUrl = clue["imageUrl"];
+  return (
+    <>
+      {Object.entries(clue).map(([key, value], index) => {
+        const imageUrl = clue["imageUrl"];
 
-    return (
-      <ClueBox
-        imageUrl={imageUrl}
-        value={value}
-        valueKey={key}
-        backgroundColor={handleValueBackground(key as keyof AnimeData, value)}
-        animationDelay={index * 250}
-        key={key}
-      />
-    );
-  });
+        return (
+          <ClueBox
+            imageUrl={imageUrl}
+            value={value}
+            valueKey={key}
+            backgroundColor={handleValueBackground(
+              key as keyof AnimeData,
+              value
+            )}
+            animationDelay={index * 250}
+            key={key}
+          />
+        );
+      })}
+    </>
+  );
 };
