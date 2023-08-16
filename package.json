@@ -1,8 +1,9 @@
 {
   "name": "weeble",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://pomierski.github.io/weeble",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
