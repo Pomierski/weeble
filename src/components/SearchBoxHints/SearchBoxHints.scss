@@ -1,0 +1,28 @@
+.search-box-hints {
+  margin-top: 20px;
+  display: flex;
+  width: 200px;
+  justify-content: space-evenly;
+
+  &__hint {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #888;
+    padding: 10px;
+    border-radius: 100%;
+    width: 45px;
+    height: 45px;
+  }
+
+  &__tooltip {
+    max-width: 250px;
+  }
+
+  &__tooltip-image {
+    width: 180px;
+    height: auto;
+    filter: blur(3px);
+  }
+}

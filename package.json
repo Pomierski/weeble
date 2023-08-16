@@ -1,0 +1,41 @@
+{
+  "name": "weeble",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "deploy": "gh-pages -d build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:prettier": "prettier *.{tsx,ts,js,scss} --write",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "dayjs": "1.11.9",
+    "framer-motion": "10.15.0",
+    "react": "18.2.0",
+    "react-countdown": "2.3.5",
+    "react-dom": "18.2.0",
+    "react-icons": "4.10.1",
+    "react-select": "5.7.4",
+    "react-textfit": "1.1.1",
+    "react-tooltip": "5.20.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "@types/react-textfit": "1.1.0",
+    "@typescript-eslint/eslint-plugin": "5.61.0",
+    "@typescript-eslint/parser": "5.61.0",
+    "@vitejs/plugin-react": "4.0.1",
+    "eslint": "8.44.0",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-react-refresh": "0.4.1",
+    "gh-pages": "6.0.0",
+    "prettier": "3.0.2",
+    "sass": "1.63.6",
+    "typescript": "5.0.2",
+    "vite": "4.4.0"
+  }
+}

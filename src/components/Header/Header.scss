@@ -1,0 +1,19 @@
+.app-header {
+  text-align: center;
+
+  &__heading {
+    font-size: 4rem;
+  }
+
+  &__icons {
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.3rem;
+
+    & > a,
+    a:visited {
+      color: #fff;
+    }
+  }
+}
