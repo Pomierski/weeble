@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Data } from "../../data/types";
 import { useAppContext } from "../../store/context";
+import { compareUnknownNumberValue } from "../../utils/compareNumbers";
 import "./ClueBox.scss";
 
 type ClueValue = string | string[] | number;
@@ -35,11 +36,11 @@ const handleClueValue = (clueValue: ClueValue) => {
 
   if (typeof clueValue === "number" && clueValue < 1900) {
     if (clueValue > 12 && clueValue < 24) {
-      return "12+";
+      return ">12";
     }
 
     if (clueValue > 24) {
-      return "24+";
+      return ">24";
     }
 
     return clueValue;
@@ -62,15 +63,9 @@ export const ClueBox = ({
   } = useAppContext();
   const isImageBox = value === imageUrl;
   const dataKey = valueKey as keyof Data;
-  const shouldDisplayArrowUp =
-    // todo: remove any
-    typeof todaysAnime[dataKey] === "number" &&
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    (todaysAnime as any)[dataKey] > value;
-  const shouldDisplayArrowDown =
-    typeof todaysAnime[dataKey] === "number" &&
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    (todaysAnime as any)[dataKey] < value;
+  const dataValue = todaysAnime[dataKey];
+  const shouldDisplayArrowUp = compareUnknownNumberValue(dataValue, value);
+  const shouldDisplayArrowDown = compareUnknownNumberValue(value, dataValue);
 
   return (
     <motion.div
