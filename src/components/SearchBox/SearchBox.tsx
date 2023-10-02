@@ -27,6 +27,7 @@ export const SearchBox = () => {
     if (!entry) {
       return;
     }
+
     addUserGuessIndex(entry.value);
 
     if (entry.value === todaysAnime.id) {
@@ -46,33 +47,25 @@ export const SearchBox = () => {
       return;
     }
 
-    if (input.length === 1) {
-      const trimmedData = searchBoxEntries
-        .filter((entry) => entry.label.toLowerCase().startsWith(input))
-        .slice(0, 19);
+    const trimmedData = searchBoxEntries
+      .filter((entry) => entry.label.toLowerCase().startsWith(input))
+      .slice(0, 19);
 
-      setSearchBoxData(trimmedData);
-      return;
+    if (input.length > 1 && trimmedData.length < 19) {
+      const containsInputData = searchBoxEntries.filter(
+        (entry) =>
+          !trimmedData.find((el) => el.label === entry.label) &&
+          entry.label.toLowerCase().includes(input)
+      );
+
+      const concatData = trimmedData.concat(
+        containsInputData.slice(0, 19 - trimmedData.length)
+      );
+
+      return setSearchBoxData(concatData);
     }
 
-    if (input.length > 1) {
-      const trimmedData = searchBoxEntries
-        .filter((entry) => entry.label.toLowerCase().startsWith(input))
-        .slice(0, 19);
-
-      if (trimmedData.length < 19)
-        trimmedData.concat(
-          ...searchBoxEntries
-            .filter(
-              (entry) =>
-                !trimmedData.find((el) => el.label === entry.label) &&
-                entry.label.toLowerCase().includes(input),
-            )
-            .slice(0, 19 - trimmedData.length),
-        );
-
-      return setSearchBoxData(trimmedData);
-    }
+    return setSearchBoxData(trimmedData);
   };
 
   return (
@@ -81,10 +74,13 @@ export const SearchBox = () => {
         <>
           <h2 className="search-box__header">Guess today's anime</h2>
 
-          <label className="search-box__label">Type any anime to begin</label>
+          <label className="search-box__label" id="search-box-label">
+            Type any anime to begin
+          </label>
 
           <div className="search-box__input-wrapper">
             <Select
+              aria-labelledby="search-box-label"
               isDisabled={userGuessedRight}
               options={searchBoxData}
               isOptionDisabled={(option) =>
