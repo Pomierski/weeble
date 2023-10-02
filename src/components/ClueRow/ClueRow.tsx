@@ -12,32 +12,42 @@ export const ClueRow = ({ data }: Props) => {
     state: { todaysAnime },
   } = useAppContext();
 
+  const handleArrayValueBackground = (
+    key: keyof AnimeData,
+    value: unknown[]
+  ) => {
+    if (value.length === 0) {
+      return ClueBackgroundColor.grey;
+    }
+
+    const todaysAnimeValue = todaysAnime[key] as unknown[];
+    const todaysAnimeSimilarity = todaysAnimeValue.filter((answerValue) =>
+      value.includes(answerValue)
+    );
+    const isExact = todaysAnimeSimilarity.length === todaysAnimeValue.length;
+    const isWrong = todaysAnimeSimilarity.length === 0;
+    const isSimilar =
+      todaysAnimeSimilarity.length !== todaysAnimeValue.length &&
+      todaysAnimeSimilarity.length !== 0;
+
+    if (isExact) {
+      return ClueBackgroundColor.green;
+    }
+
+    if (isWrong) {
+      return ClueBackgroundColor.red;
+    }
+
+    if (isSimilar) {
+      return ClueBackgroundColor.yellow;
+    }
+
+    return ClueBackgroundColor.grey;
+  };
+
   const handleValueBackground = (key: keyof AnimeData, value: unknown) => {
     if (Array.isArray(value)) {
-      if (value.length === 0) {
-        return ClueBackgroundColor.grey;
-      }
-      const todaysAnimeValue = todaysAnime[key] as unknown[];
-      const todaysAnimeSimilarity = todaysAnimeValue.filter((answerValue) =>
-        value.includes(answerValue)
-      );
-      const isExact = todaysAnimeSimilarity.length === todaysAnimeValue.length;
-      const isWrong = todaysAnimeSimilarity.length === 0;
-      const isNotExact =
-        todaysAnimeSimilarity.length !== todaysAnimeValue.length &&
-        todaysAnimeSimilarity.length !== 0;
-
-      if (isExact) {
-        return ClueBackgroundColor.green;
-      }
-
-      if (isWrong) {
-        return ClueBackgroundColor.red;
-      }
-
-      if (isNotExact) {
-        return ClueBackgroundColor.yellow;
-      }
+      return handleArrayValueBackground(key, value);
     }
 
     if (value !== todaysAnime[key]) {
@@ -57,11 +67,12 @@ export const ClueRow = ({ data }: Props) => {
     <>
       {Object.entries(clue).map(([key, value], index) => {
         const imageUrl = clue["imageUrl"];
+        const clueValue = value as AnimeData[keyof AnimeData];
 
         return (
           <ClueBox
             imageUrl={imageUrl}
-            value={value}
+            value={clueValue}
             valueKey={key}
             backgroundColor={handleValueBackground(
               key as keyof AnimeData,
