@@ -13,6 +13,14 @@ interface Props {
   label?: string;
 }
 
+const renderTooltipContent = (imageUrl?: string, content?: ReactNode) => {
+  if (imageUrl) {
+    return <img className="hint__tooltip-image" src={imageUrl} />;
+  }
+
+  return content;
+};
+
 export const Hint = ({
   tries,
   triesToUnlock,
@@ -31,11 +39,7 @@ export const Hint = ({
           `Hint will be unlocked in ${triesToUnlock - tries} tries`
         ) : (
           <div className="hint__tooltip">
-            {imageUrl ? (
-              <img className="hint__tooltip-image" src={imageUrl} />
-            ) : (
-              content
-            )}
+            {renderTooltipContent(imageUrl, content)}
           </div>
         )}
       </Tooltip>

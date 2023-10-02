@@ -4,7 +4,7 @@ import { useAppContext } from "../../store/context";
 import { compareUnknownNumberValue } from "../../utils/compareNumbers";
 import "./ClueBox.scss";
 
-type ClueValue = string | string[] | number;
+type ClueValue = string | string[] | number | null;
 
 export enum ClueBackgroundColor {
   green = "darkgreen",
