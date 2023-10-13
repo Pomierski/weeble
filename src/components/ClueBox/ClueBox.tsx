@@ -21,7 +21,7 @@ interface Props {
   animationDelay: number;
 }
 
-const handleClueValue = (clueValue: ClueValue) => {
+const handleClueValue = (clueValue: ClueValue): React.ReactNode => {
   if (!clueValue) {
     return "?";
   }
@@ -32,18 +32,6 @@ const handleClueValue = (clueValue: ClueValue) => {
     }
 
     return clueValue.map((value, index) => <p key={index}>{value}</p>);
-  }
-
-  if (typeof clueValue === "number" && clueValue < 1900) {
-    if (clueValue > 12 && clueValue < 24) {
-      return ">12";
-    }
-
-    if (clueValue > 24) {
-      return ">24";
-    }
-
-    return clueValue;
   }
 
   return clueValue;
