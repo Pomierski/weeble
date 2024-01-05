@@ -63,7 +63,7 @@ export const ClueBox = ({
         y: 0,
         opacity: 1,
       }}
-      className="clue-box"
+      className="clue-box flex align-center justify-center"
       style={{
         backgroundImage: isImageBox ? getImageUrl(imageUrl) : "",
         backgroundColor,

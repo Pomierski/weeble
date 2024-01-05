@@ -69,12 +69,12 @@ export const SearchBox = () => {
   };
 
   return (
-    <div className="search-box">
+    <div className="search-box margin-top-xl">
       {!userWon ? (
         <>
-          <h2 className="search-box__header">Guess today's anime</h2>
+          <h2 className="text-lg">Guess today's anime</h2>
 
-          <label className="search-box__label" id="search-box-label">
+          <label className="margin-top-lg text-sm" id="search-box-label">
             Type any anime to begin
           </label>
 
@@ -101,6 +101,15 @@ export const SearchBox = () => {
       ) : (
         <>
           <h2>YOU GUESSED CORRECTLY!</h2>
+          <img
+            src={todaysAnime.imageUrl}
+            alt={todaysAnime.titles[0]}
+            className="search-box__image margin-top-sm"
+            width="220"
+          />
+          <p className="text-md margin-bottom-sm text-bold">
+            {todaysAnime.titles[0]}
+          </p>
           <p>Next anime will be avaliable in</p>
           <Countdown date={getTomorrowsDate()} />
         </>

@@ -3,10 +3,10 @@ import "./Header.scss";
 
 export const Header = (): JSX.Element => {
   return (
-    <div className="app-header">
+    <div className="app-header padding-top-xl">
       <h1 className="app-header__heading">WEEBLE</h1>
       <p>Made by Piotr Pomierski</p>
-      <div className="flex app-header__icons">
+      <div className="flex justify-center align-center app-header__icons">
         <a
           target="_blank"
           href="https://github.com/Pomierski"

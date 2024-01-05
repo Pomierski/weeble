@@ -1,0 +1,87 @@
+$sizes: xl, lg, md, sm, xs;
+$directons: left, right, top, bottom;
+
+// flex
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+// text
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+// utils
+
+.pointer {
+  cursor: pointer;
+}
+
+// width, heighh
+
+.width-100 {
+  width: 100%;
+}
+
+.height-100 {
+  height: 100%;
+}
+
+// text, margin, padding
+
+@each $size in $sizes {
+  .text-#{$size} {
+    font-size: var(--text-#{$size});
+  }
+
+  .margin-y-#{$size} {
+    margin-top: var(--spacing-#{$size});
+    margin-bottom: var(--spacing-#{$size});
+  }
+
+  .margin-x-#{$size} {
+    margin-left: var(--spacing-#{$size});
+    margin-right: var(--spacing-#{$size});
+  }
+
+  .padding-y-#{$size} {
+    padding-top: var(--spacing-#{$size});
+    padding-bottom: var(--spacing-#{$size});
+  }
+
+  .padding-x-#{$size} {
+    padding-left: var(--spacing-#{$size});
+    padding-right: var(--spacing-#{$size});
+  }
+
+  @each $direction in $directons {
+    .margin-#{$direction}-#{$size} {
+      margin-#{$direction}: var(--spacing-#{$size});
+    }
+    .padding-#{$direction}-#{$size} {
+      padding-#{$direction}: var(--spacing-#{$size});
+    }
+  }
+}

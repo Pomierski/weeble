@@ -4,7 +4,7 @@
   left: 0;
   background-image: url("../../assets/background.webp");
   background-size: cover;
-  filter: opacity(0.4);
+  filter: opacity(0.4) blur(3px);
   transform: scale(1.02);
   width: 100dvw;
   height: 100dvh;
@@ -13,9 +13,6 @@
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   max-width: 910px;
   margin: 0 auto;
   padding-top: 3.5rem;

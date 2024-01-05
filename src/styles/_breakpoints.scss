@@ -1,0 +1,10 @@
+@mixin screenMobile {
+  @media only screen and (max-width: 910px) {
+    @content;
+  }
+}
+@mixin screenDesktop {
+  @media only screen and (min-width: 910px) {
+    @content;
+  }
+}

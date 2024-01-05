@@ -6,14 +6,12 @@
   }
 
   &__icons {
-    align-items: center;
-    justify-content: center;
     gap: 1rem;
     font-size: 1.3rem;
 
     & > a,
     a:visited {
-      color: #fff;
+      color: var(--color-primary);
     }
   }
 }

@@ -1,5 +1,7 @@
+@use "../../styles/breakpoints" as *;
+
 .search-box {
-  border: 1px solid #fff;
+  border: 1px solid var(--color-primary);
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
@@ -7,22 +9,18 @@
   flex-direction: column;
   width: fit-content;
   margin: 0 auto;
-  margin-top: 120px;
   padding: 1.2rem 3.8rem;
   margin-bottom: 3.8rem;
   min-height: 210px;
 
-  @media only screen and (max-width: 910px) {
+  @include screenMobile {
+    margin-top: 30px;
     padding: 1.2rem 2rem;
   }
 
-  &__header {
-    font-size: 1.8rem;
-  }
-
-  &__label {
-    margin-top: 1.7rem;
-    font-size: 1rem;
+  &__image {
+    width: 220px;
+    height: auto;
   }
 
   &__input-wrapper {

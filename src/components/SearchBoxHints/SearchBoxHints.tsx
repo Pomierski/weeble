@@ -13,7 +13,7 @@ export const SearchBoxHints = (): JSX.Element => {
   const imageHintId = "image-hint";
 
   return (
-    <div className="search-box-hints">
+    <div className="search-box-hints flex margin-top-lg">
       <Hint
         content={todaysAnime.synopsis}
         icon={<BiAlignLeft />}

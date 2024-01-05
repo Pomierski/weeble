@@ -1,0 +1,21 @@
+@mixin global-variables {
+  // colors
+  --color-primary: #fff;
+  --color-secondary: #d1d1d1;
+  --color-background: #292929;
+
+  // font-size
+  --text-xl: 2.2rem;
+  --text-lg: 1.8rem;
+  --text-md: 1.2rem;
+  --text-sm: 0.85rem;
+  --text-xs: 0.6rem;
+
+  // spacing
+
+  --spacing-xl: 2.5rem;
+  --spacing-lg: 1.8rem;
+  --spacing-md: 1.5rem;
+  --spacing-sm: 1rem;
+  --spacing-xs: 0.5rem;
+}

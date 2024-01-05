@@ -17,7 +17,7 @@ function App() {
   }
 
   const data = state?.userGuesses?.map((id) =>
-    getAnimeById(cachedData?.data ?? [], id),
+    getAnimeById(cachedData?.data ?? [], id)
   );
 
   return (
