@@ -10,6 +10,11 @@
   padding-bottom: 1rem;
   max-width: 100%;
 
+  @media only screen and (max-width: 740px) {
+    grid-template-columns: repeat(4, 6.4rem);
+    overflow: visible;
+  }
+
   &::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #222;
@@ -26,4 +31,12 @@
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #333;
   }
+}
+
+
+.clues-mobile-wrapper {
+  overflow-x: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -1,0 +1,1 @@
+export type SliceRange = [number | undefined, number | undefined];

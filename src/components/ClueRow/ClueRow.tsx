@@ -1,13 +1,15 @@
 import { AnimeData, Data } from "../../data/types";
 import { useAppContext } from "../../store/context";
+import { SliceRange } from "../../types/sliceRange";
 import { getAnimeClueData } from "../../utils/getAnimeClueData";
 import { ClueBackgroundColor, ClueBox } from "../ClueBox/ClueBox";
 
 interface Props {
   data: Data;
+  sliceRange?: SliceRange;
 }
 
-export const ClueRow = ({ data }: Props) => {
+export const ClueRow = ({ data, sliceRange = [0, undefined] }: Props) => {
   const {
     state: { todaysAnime },
   } = useAppContext();
@@ -65,7 +67,7 @@ export const ClueRow = ({ data }: Props) => {
 
   return (
     <>
-      {Object.entries(clue).map(([key, value], index) => {
+      {Object.entries(clue).slice(...sliceRange).map(([key, value], index) => {
         const imageUrl = clue["imageUrl"];
         const clueValue = value as AnimeData[keyof AnimeData];
 

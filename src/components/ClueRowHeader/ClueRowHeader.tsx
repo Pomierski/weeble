@@ -1,9 +1,14 @@
 import { useAppContext } from "../../store/context";
+import { SliceRange } from "../../types/sliceRange";
 import { getAnimeClueData } from "../../utils/getAnimeClueData";
 import { splitOnUppercase } from "../../utils/splitOnUppercase";
 import "./ClueRowHeader.scss";
 
-export const ClueRowHeader = () => {
+interface Props {
+  sliceRange?: SliceRange;
+}
+
+export const ClueRowHeader = ({ sliceRange = [0, undefined] }: Props) => {
   const {
     state: { todaysAnime },
   } = useAppContext();
@@ -13,7 +18,7 @@ export const ClueRowHeader = () => {
 
   return (
     <>
-      {keys.map((key) => (
+      {keys.slice(...sliceRange).map((key) => (
         <div className="clue-row-header__item" key={key}>
           {splitOnUppercase(key)}
         </div>
