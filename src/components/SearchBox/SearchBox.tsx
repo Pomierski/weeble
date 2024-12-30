@@ -75,7 +75,7 @@ export const SearchBox = () => {
           <h2 className="text-lg">Guess today's anime</h2>
 
           <label className="margin-top-lg text-sm" id="search-box-label">
-            Type any anime to begin
+            Type in any anime title to begin
           </label>
 
           <div className="search-box__input-wrapper">
