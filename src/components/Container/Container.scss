@@ -1,3 +1,5 @@
+@use "../../styles/breakpoints" as *;
+
 .container-background {
   position: fixed;
   top: 0;
@@ -10,10 +12,22 @@
   height: 100dvh;
   background-position-x: 30%;
   z-index: -1;
+
+  @include screenMobile {
+    width: 100dvw;
+    height: 100dvh;
+    background-size: auto;
+    background-position-x: 15%;
+    background-position-y: 60%;
+  }
 }
 
 .container {
   max-width: 910px;
   margin: 0 auto;
   padding-top: 3.5rem;
+
+  @include screenMobile {
+    padding-top: 0;
+  }
 }

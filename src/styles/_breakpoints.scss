@@ -1,4 +1,9 @@
 @mixin screenMobile {
+  @media only screen and (max-width: 740px) {
+    @content;
+  }
+}
+@mixin screenMobileMd {
   @media only screen and (max-width: 910px) {
     @content;
   }

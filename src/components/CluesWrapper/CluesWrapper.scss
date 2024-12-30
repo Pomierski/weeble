@@ -1,3 +1,5 @@
+@use "../../styles/breakpoints" as *;
+
 .clues-wrapper {
   display: grid;
   grid-auto-flow: row;
@@ -10,7 +12,7 @@
   padding-bottom: 1rem;
   max-width: 100%;
 
-  @media only screen and (max-width: 740px) {
+  @include screenMobile {
     grid-template-columns: repeat(4, 6.4rem);
     overflow: visible;
   }
