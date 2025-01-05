@@ -2,6 +2,7 @@ import { AnimeData, Data } from "../../data/types";
 import { useAppContext } from "../../store/context";
 import { SliceRange } from "../../types/sliceRange";
 import { getAnimeClueData } from "../../utils/getAnimeClueData";
+import { getIsArrayEqual } from "../../utils/getIsArrayEqual";
 import { ClueBackgroundColor, ClueBox } from "../ClueBox/ClueBox";
 
 interface Props {
@@ -16,21 +17,20 @@ export const ClueRow = ({ data, sliceRange = [0, undefined] }: Props) => {
 
   const handleArrayValueBackground = (
     key: keyof AnimeData,
-    value: unknown[]
+    clueValue: unknown[]
   ) => {
-    if (value.length === 0) {
+    if (clueValue.length === 0) {
       return ClueBackgroundColor.grey;
     }
 
     const todaysAnimeValue = todaysAnime[key] as unknown[];
     const todaysAnimeSimilarity = todaysAnimeValue.filter((answerValue) =>
-      value.includes(answerValue)
+      clueValue.includes(answerValue)
     );
-    const isExact = todaysAnimeSimilarity.length === todaysAnimeValue.length;
+
+    const isExact = getIsArrayEqual(todaysAnimeValue, clueValue);
     const isWrong = todaysAnimeSimilarity.length === 0;
-    const isSimilar =
-      todaysAnimeSimilarity.length !== todaysAnimeValue.length &&
-      todaysAnimeSimilarity.length !== 0;
+    const isSimilar = !isWrong && !isExact
 
     if (isExact) {
       return ClueBackgroundColor.green;

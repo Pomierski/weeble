@@ -54,6 +54,7 @@ export const ClueBox = ({
   const dataValue = todaysAnime[dataKey];
   const shouldDisplayArrowUp = compareUnknownNumberValue(dataValue, value);
   const shouldDisplayArrowDown = compareUnknownNumberValue(value, dataValue);
+  const isArrowVisible = shouldDisplayArrowUp || shouldDisplayArrowDown
 
   return (
     <motion.div
@@ -69,7 +70,7 @@ export const ClueBox = ({
         backgroundColor,
       }}
     >
-      {(shouldDisplayArrowUp || shouldDisplayArrowDown) && (
+      {isArrowVisible && (
         <div
           className={"clue-box__arrow".concat(
             shouldDisplayArrowDown ? " clue-box__arrow--down" : ""
